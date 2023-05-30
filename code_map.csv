@@ -1,0 +1,27 @@
+code;info;remark
+4;wide;serve direction
+5;body;serve direction
+6;down the T;serve direction
+f;forehand;common shot
+b;backhand;common shot
+s;backhand slice;common shot
+r;forehand slice;common shot
+@;unforced error;how point ended
+#;forced error;how point ended
+*;winner;how point ended
+n;net;type of error
+w;wide;type of error
+d;deep;type of error
+x;wide and deep;type of error
+v;forehand volley;other shot
+l;lob;other shot
+o;overhead/smash;other shot
+1;to a right-hander’s forehand (or a lefty’s backhand);shot direction
+2;down the middle;shot direction
+3;to a right-hander’s backhand;shot direction
+7;shallow;return depth
+8;moderately deep;return depth
+9;verry deep;return depth
++;approach shots;court position
+-;hit at the net;court position
+=;hit at the baseline;court position
