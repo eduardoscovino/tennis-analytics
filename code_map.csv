@@ -14,8 +14,16 @@ w;wide;type of error
 d;deep;type of error
 x;wide and deep;type of error
 v;forehand volley;other shot
+z;backhand volley;other shot
 l;lob;other shot
 o;overhead/smash;other shot
+p;backhand overhead/smash;other shot
+u;forehand drop shot;other shot
+y;backhand drop shot;other shot
+h;forehand half-volley;other shot
+i;backhand half-volley;other shot
+j;forehand swinging volley;other shot
+k;backhand  swinging volley;other shot
 1;to a right-hander’s forehand (or a lefty’s backhand);shot direction
 2;down the middle;shot direction
 3;to a right-hander’s backhand;shot direction
