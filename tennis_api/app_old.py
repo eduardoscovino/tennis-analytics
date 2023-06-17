@@ -24,7 +24,7 @@ async def read_item(player_name: str):
     df['i_serve'] = np.where(((df['Svr'] == 1) & (df['Player 1'] == opponent )) | ((df['Svr'] == 2) & (df['Player 2'] == opponent)), 0, 1)
     df['i_win'] = np.where(((df['isSvrWinner'] == df['i_serve'])), 1, 0)
     df['is_second_service'] = np.where(((df['2nd'].isnull())), 0, 1)
-    df = df[df['Surface'].isin(['Hard','Clay','Grass'])]
+
     ## serve direction
     # first caracter from the 2nd serve
     df['dir_srv'] = df.loc[:, '2nd'].str[0]
@@ -35,8 +35,8 @@ async def read_item(player_name: str):
     df.reset_index(inplace=True)
 
     ## saves the file and return the dataset
-    ## csv_file = "raw_data/" + opponent + "data_points.csv"
-    ## df.to_csv(csv_file, index=False)
+    csv_file = "raw_data/" + opponent + "data_points.csv"
+    df.to_csv(csv_file, index=False)
     return Response(df.to_json(orient="records"), media_type="application/json")
 
 @app.get("/player_data_model/{player_name}")
@@ -56,8 +56,6 @@ async def read_item(player_name: str):
     df['i_win'] = np.where(((df['isSvrWinner'] == df['i_serve'])), 1, 0)
     df['is_second_service'] = np.where(((df['2nd'].isnull())), 0, 1)
 
-
-    df = df[df['Surface'].isin(['Hard','Clay','Grass'])]
     ## direção do saque
     # primeiro caractere do segundo saque
     df['dir_srv'] = df.loc[:, '2nd'].str[0]
@@ -112,8 +110,8 @@ async def read_item(player_name: str):
     X = df[features]
 
     ## saves the file and return the dataset
-    ##csv_file = "raw_data/" + opponent + "data_model.csv"
-    ##X.to_csv(csv_file, index=False)
+    csv_file = "raw_data/" + opponent + "data_model.csv"
+    X.to_csv(csv_file, index=False)
     return Response(X.to_json(orient="records"), media_type="application/json")
 
 @app.get("/player_summary/{player_name}")
@@ -132,13 +130,14 @@ async def read_item(player_name: str):
     df['i_win'] = np.where(((df['isSvrWinner'] == df['i_serve'])), 1, 0)
     df['is_second_service'] = np.where(((df['2nd'].isnull())), 0, 1)
 
+    df = df[df['Surface'].isin(['Hard','Clay','Grass'])]
+
     ## serve direction
     # first caracter from the 2nd serve
     df['dir_srv'] = df.loc[:, '2nd'].str[0]
     ## complete with the 1st charact from the 1st serve
     df['dir_srv'].fillna(df.loc[:, '1st'].str[0], inplace=True)
 
-    df = df[df['Surface'].isin(['Hard','Clay','Grass'])]
     ##reseta o indice
     df.reset_index(inplace=True)
 
@@ -163,8 +162,8 @@ async def read_item(player_name: str):
     df = df.reset_index()
 
     ## saves the file and return the dataset
-    ##csv_file = "raw_data/" + opponent + "points.csv"
-    ##df.to_csv(csv_file, index=False)
+    csv_file = "raw_data/" + opponent + "points.csv"
+    df.to_csv(csv_file, index=False)
 
     return Response(df.to_json(orient="records"), media_type="application/json")
 
